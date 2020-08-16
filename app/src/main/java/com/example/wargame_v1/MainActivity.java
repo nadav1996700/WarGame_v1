@@ -40,34 +40,30 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        // initialize values
+        /* initialize values */
         setValues();
 
-        // add buttons to lists
+        /* add buttons to lists */
         initialize_superman_list();
         initialize_ironman_list();
 
-        // activate buttons
-        try {
-            activateButtons();
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-
-
+        /* activate buttons */
+        activateButtons(superman_Buttons);
+        activateButtons(ironman_Buttons);
     }
 
-    private void activateButtons() {
+    private void activateButtons(ArrayList<Button> buttons) {
 
-        for(Button btn: superman_Buttons) {
+        for(Button btn: buttons) {
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    // update progress bar after attack
+                    /* update progress bar after attack */
                     setProgressBar(view);
 
-                    // if game over -> switch Activity
-                    // else -> switch turn
+
+                    /* if game over -> switch Activity
+                       else -> switch turn */
                     if(!gameOver())
                         switchTurn();
                 }
@@ -148,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
         superman_image = findViewById(R.id.main_IV_superman);
         ironman_image = findViewById(R.id.main_IV_ironman);
 
+        /* initialize value of progress bars to 100 */
         superman_PB.setProgress(100);
         ironman_PB.setProgress(100);
     }
