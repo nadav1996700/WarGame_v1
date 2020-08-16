@@ -16,9 +16,9 @@ public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_VICTORY = "com.example.application.example.EXTRA_VICTORY";
     private static final int SUPERMAN_TURN = 1;
     private static final int IRONMAN_TURN = 2;
-    private static final int LARGEATTACKPOINTS = 50;
-    private static final int MEDIUMATTACKPOINTS = 30;
-    private static final int SMALLATTACKPOINTS = 10;
+    private static final int LARGE_ATTACK_POINTS = 50;
+    private static final int MEDIUM_ATTACK_POINTS = 30;
+    private static final int SMALL_ATTACK_POINTS = 10;
 
     private ProgressBar superman_PB;
     private ProgressBar ironman_PB;
@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         /* initialize values */
         setValues();
@@ -79,25 +78,25 @@ public class MainActivity extends AppCompatActivity {
         if (turn == SUPERMAN_TURN) {
             switch (view.getId()) {
                 case R.id.main_BTN_10pt_superman:
-                    ironman_PB.setProgress(ironman_PB.getProgress() - SMALLATTACKPOINTS);
+                    ironman_PB.setProgress(ironman_PB.getProgress() - SMALL_ATTACK_POINTS);
                     break;
                 case R.id.main_BTN_30pt_superman:
-                    ironman_PB.setProgress(ironman_PB.getProgress() - MEDIUMATTACKPOINTS);
+                    ironman_PB.setProgress(ironman_PB.getProgress() - MEDIUM_ATTACK_POINTS);
                     break;
                 case R.id.main_BTN_50pt_superman:
-                    ironman_PB.setProgress(ironman_PB.getProgress() - LARGEATTACKPOINTS);
+                    ironman_PB.setProgress(ironman_PB.getProgress() - LARGE_ATTACK_POINTS);
                     break;
             }
         } else if (turn == IRONMAN_TURN) {
             switch (view.getId()) {
                 case R.id.main_BTN_10pt_ironman:
-                    superman_PB.setProgress(superman_PB.getProgress() - SMALLATTACKPOINTS);
+                    superman_PB.setProgress(superman_PB.getProgress() - SMALL_ATTACK_POINTS);
                     break;
                 case R.id.main_BTN_30pt_ironman:
-                    superman_PB.setProgress(superman_PB.getProgress() - MEDIUMATTACKPOINTS);
+                    superman_PB.setProgress(superman_PB.getProgress() - MEDIUM_ATTACK_POINTS);
                     break;
                 case R.id.main_BTN_50pt_ironman:
-                    superman_PB.setProgress(superman_PB.getProgress() - LARGEATTACKPOINTS);
+                    superman_PB.setProgress(superman_PB.getProgress() - LARGE_ATTACK_POINTS);
                     break;
             }
         }
@@ -110,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /* if game over -> send victory name to Victory Activity and switch activity */
     private boolean gameOver() {
         if(superman_PB.getProgress() == 0) {
             openVictoryActivity("IronMan");
@@ -154,19 +154,31 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void switchTurn() {
+        ArrayList<Button> switchTo;
+        ArrayList<Button> current;
         if (turn == SUPERMAN_TURN) {
-            for(Button btn: superman_Buttons)
-                btn.setEnabled(false);
-            for(Button btn: ironman_Buttons)
-                    btn.setEnabled(true);
-            turn = IRONMAN_TURN;
+            current = superman_Buttons;
+            switchTo = ironman_Buttons;
         }
         else {
-            for(Button btn: ironman_Buttons)
-                btn.setEnabled(false);
-            for(Button btn: superman_Buttons)
-                    btn.setEnabled(true);
-            turn = SUPERMAN_TURN;
+            current = ironman_Buttons;
+            switchTo = superman_Buttons;
         }
+        makeSwitch(current, switchTo);
+    }
+
+    private void makeSwitch(ArrayList<Button> current, ArrayList<Button> switchTo) {
+        for(Button btn: current)
+            btn.setEnabled(false);
+        for(Button btn: switchTo)
+            btn.setEnabled(true);
+        changeTurn();
+    }
+
+    private void changeTurn() {
+        if (turn == SUPERMAN_TURN)
+            turn = IRONMAN_TURN;
+        else
+            turn = SUPERMAN_TURN;
     }
 }
