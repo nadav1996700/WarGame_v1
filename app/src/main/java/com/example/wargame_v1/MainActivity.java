@@ -50,6 +50,10 @@ public class MainActivity extends AppCompatActivity {
         /* activate buttons */
         activateButtons(superman_Buttons);
         activateButtons(ironman_Buttons);
+
+        /* disable ironman buttons -> superman start */
+        for(Button btn: ironman_Buttons)
+            btn.setEnabled(false);
     }
 
     private void activateButtons(ArrayList<Button> buttons) {
