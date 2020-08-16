@@ -28,8 +28,8 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-            android:progress="100"
-            android:min="0"/>
+            android:min="0"
+            android:indeterminate="false" />
 
 
     </LinearLayout>
@@ -125,8 +125,8 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-            android:progress="100"
-            android:min="0"/>
+            android:min="0"
+            android:indeterminate="false"/>
 
     </LinearLayout>
 

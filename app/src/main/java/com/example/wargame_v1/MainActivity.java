@@ -80,19 +80,25 @@ public class MainActivity extends AppCompatActivity {
             switch (view.getId()) {
                 case R.id.main_BTN_10pt_superman:
                     ironman_PB.setProgress(ironman_PB.getProgress() - SMALLATTACKPOINTS);
+                    break;
                 case R.id.main_BTN_30pt_superman:
                     ironman_PB.setProgress(ironman_PB.getProgress() - MEDIUMATTACKPOINTS);
+                    break;
                 case R.id.main_BTN_50pt_superman:
                     ironman_PB.setProgress(ironman_PB.getProgress() - LARGEATTACKPOINTS);
+                    break;
             }
         } else if (turn == IRONMAN_TURN) {
             switch (view.getId()) {
                 case R.id.main_BTN_10pt_ironman:
                     superman_PB.setProgress(superman_PB.getProgress() - SMALLATTACKPOINTS);
+                    break;
                 case R.id.main_BTN_30pt_ironman:
                     superman_PB.setProgress(superman_PB.getProgress() - MEDIUMATTACKPOINTS);
+                    break;
                 case R.id.main_BTN_50pt_ironman:
                     superman_PB.setProgress(superman_PB.getProgress() - LARGEATTACKPOINTS);
+                    break;
             }
         }
     }
@@ -106,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean gameOver() {
         if(superman_PB.getProgress() == 0) {
-            openVictoryActivity("IRONMAN");
+            openVictoryActivity("IronMan");
             return true;
         }
         else if (ironman_PB.getProgress() == 0) {
@@ -141,6 +147,9 @@ public class MainActivity extends AppCompatActivity {
         smallAttack_ironman = findViewById(R.id.main_BTN_10pt_ironman);
         superman_image = findViewById(R.id.main_IV_superman);
         ironman_image = findViewById(R.id.main_IV_ironman);
+
+        superman_PB.setProgress(100);
+        ironman_PB.setProgress(100);
     }
 
     private void switchTurn() {
@@ -148,7 +157,6 @@ public class MainActivity extends AppCompatActivity {
             for(Button btn: superman_Buttons)
                 btn.setEnabled(false);
             for(Button btn: ironman_Buttons)
-                if(!btn.isEnabled())
                     btn.setEnabled(true);
             turn = IRONMAN_TURN;
         }
@@ -156,7 +164,6 @@ public class MainActivity extends AppCompatActivity {
             for(Button btn: ironman_Buttons)
                 btn.setEnabled(false);
             for(Button btn: superman_Buttons)
-                if(!btn.isEnabled())
                     btn.setEnabled(true);
             turn = SUPERMAN_TURN;
         }
