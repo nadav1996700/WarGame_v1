@@ -27,8 +27,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-            android:min="0"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:progressDrawable="#2CEE00"
             android:indeterminate="false" />
 
 
@@ -124,8 +124,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            style="@android:style/Widget.ProgressBar.Horizontal"
             android:min="0"
+            android:progressDrawable="#2CEE00"
             android:indeterminate="false"/>
 
     </LinearLayout>
