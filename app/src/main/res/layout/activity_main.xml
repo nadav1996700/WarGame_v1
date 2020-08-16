@@ -16,17 +16,20 @@
         android:layout_margin="8dp">
 
         <ImageView
+            android:id="@+id/main_IV_superman"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_marginTop="100dp"
-            android:src="@drawable/superman" />
+            android:src="@drawable/superman"/>
 
         <ProgressBar
             android:id="@+id/main_PB_supermanPB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            style="@style/Widget.AppCompat.ProgressBar.Horizontal" />
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:progress="100"
+            android:min="0"/>
 
 
     </LinearLayout>
@@ -110,17 +113,20 @@
         android:layout_margin="8dp">
 
         <ImageView
+            android:id="@+id/main_IV_ironman"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_marginTop="100dp"
-            android:src="@drawable/iron" />
+            android:src="@drawable/iron"/>
 
         <ProgressBar
             android:id="@+id/main_PB_ironmanPB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            style="@style/Widget.AppCompat.ProgressBar.Horizontal" />
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:progress="100"
+            android:min="0"/>
 
     </LinearLayout>
 

@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class VictoryActivity extends AppCompatActivity {
@@ -25,7 +26,7 @@ public class VictoryActivity extends AppCompatActivity {
         // get victory name and set TextView
         Intent input = getIntent();
         String victor = input.getStringExtra(MainActivity.EXTRA_VICTORY);
-        victory.setText(victor);
+        victory.setText(victor + " WON!");
 
         newGame.setOnClickListener(new View.OnClickListener() {
             @Override

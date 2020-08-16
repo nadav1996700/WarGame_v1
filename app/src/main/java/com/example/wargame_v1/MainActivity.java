@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import java.util.ArrayList;
@@ -21,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
 
     private ProgressBar superman_PB;
     private ProgressBar ironman_PB;
+    private ImageView superman_image;
+    private ImageView ironman_image;
     private Button largeAttack_superman;
     private Button mediumAttack_superman;
     private Button smallAttack_superman;
@@ -36,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         // initialize values
         setValues();
 
@@ -44,36 +48,23 @@ public class MainActivity extends AppCompatActivity {
         initialize_ironman_list();
 
         // activate buttons
-        activateButtons();
+        try {
+            activateButtons();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     private void activateButtons() {
-        superman_Buttons = new ArrayList<>();
-        ironman_Buttons = new ArrayList<>();
 
         for(Button btn: superman_Buttons) {
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (turn == SUPERMAN_TURN) {
-                        switch (view.getId()) {
-                            case R.id.main_BTN_10pt_superman:
-                                ironman_PB.setProgress(ironman_PB.getProgress() - SMALLATTACKPOINTS);
-                            case R.id.main_BTN_30pt_superman:
-                                ironman_PB.setProgress(ironman_PB.getProgress() - MEDIUMATTACKPOINTS);
-                            case R.id.main_BTN_50pt_superman:
-                                ironman_PB.setProgress(ironman_PB.getProgress() - LARGEATTACKPOINTS);
-                        }
-                    } else if (turn == IRONMAN_TURN) {
-                        switch (view.getId()) {
-                            case R.id.main_BTN_10pt_ironman:
-                                superman_PB.setProgress(superman_PB.getProgress() - SMALLATTACKPOINTS);
-                            case R.id.main_BTN_30pt_ironman:
-                                superman_PB.setProgress(superman_PB.getProgress() - MEDIUMATTACKPOINTS);
-                            case R.id.main_BTN_50pt_ironman:
-                                superman_PB.setProgress(superman_PB.getProgress() - LARGEATTACKPOINTS);
-                        }
-                    }
+                    // update progress bar after attack
+                    setProgressBar(view);
 
                     // if game over -> switch Activity
                     // else -> switch turn
@@ -81,6 +72,28 @@ public class MainActivity extends AppCompatActivity {
                         switchTurn();
                 }
             });
+        }
+    }
+
+    private void setProgressBar(View view) {
+        if (turn == SUPERMAN_TURN) {
+            switch (view.getId()) {
+                case R.id.main_BTN_10pt_superman:
+                    ironman_PB.setProgress(ironman_PB.getProgress() - SMALLATTACKPOINTS);
+                case R.id.main_BTN_30pt_superman:
+                    ironman_PB.setProgress(ironman_PB.getProgress() - MEDIUMATTACKPOINTS);
+                case R.id.main_BTN_50pt_superman:
+                    ironman_PB.setProgress(ironman_PB.getProgress() - LARGEATTACKPOINTS);
+            }
+        } else if (turn == IRONMAN_TURN) {
+            switch (view.getId()) {
+                case R.id.main_BTN_10pt_ironman:
+                    superman_PB.setProgress(superman_PB.getProgress() - SMALLATTACKPOINTS);
+                case R.id.main_BTN_30pt_ironman:
+                    superman_PB.setProgress(superman_PB.getProgress() - MEDIUMATTACKPOINTS);
+                case R.id.main_BTN_50pt_ironman:
+                    superman_PB.setProgress(superman_PB.getProgress() - LARGEATTACKPOINTS);
+            }
         }
     }
 
@@ -92,11 +105,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private boolean gameOver() {
-        if(superman_PB.getProgress() <= 0) {
+        if(superman_PB.getProgress() == 0) {
             openVictoryActivity("IRONMAN");
             return true;
         }
-        else if (ironman_PB.getProgress() <= 0) {
+        else if (ironman_PB.getProgress() == 0) {
             openVictoryActivity("SUPERMAN");
             return true;
         }
@@ -104,12 +117,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initialize_superman_list() {
+        superman_Buttons = new ArrayList<>();
         superman_Buttons.add(largeAttack_superman);
         superman_Buttons.add(mediumAttack_superman);
         superman_Buttons.add(smallAttack_superman);
     }
 
     private void initialize_ironman_list() {
+        ironman_Buttons = new ArrayList<>();
         ironman_Buttons.add(largeAttack_ironman);
         ironman_Buttons.add(mediumAttack_ironman);
         ironman_Buttons.add(smallAttack_ironman);
@@ -124,9 +139,8 @@ public class MainActivity extends AppCompatActivity {
         largeAttack_ironman = findViewById(R.id.main_BTN_50pt_ironman);
         mediumAttack_ironman = findViewById(R.id.main_BTN_30pt_ironman);
         smallAttack_ironman = findViewById(R.id.main_BTN_10pt_ironman);
-
-        superman_PB.setMax(100);
-        ironman_PB.setMax(100);
+        superman_image = findViewById(R.id.main_IV_superman);
+        ironman_image = findViewById(R.id.main_IV_ironman);
     }
 
     private void switchTurn() {
@@ -134,14 +148,16 @@ public class MainActivity extends AppCompatActivity {
             for(Button btn: superman_Buttons)
                 btn.setEnabled(false);
             for(Button btn: ironman_Buttons)
-                btn.setEnabled(true);
+                if(!btn.isEnabled())
+                    btn.setEnabled(true);
             turn = IRONMAN_TURN;
         }
         else {
             for(Button btn: ironman_Buttons)
                 btn.setEnabled(false);
             for(Button btn: superman_Buttons)
-                btn.setEnabled(true);
+                if(!btn.isEnabled())
+                    btn.setEnabled(true);
             turn = SUPERMAN_TURN;
         }
     }
