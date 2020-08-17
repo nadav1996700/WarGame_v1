@@ -107,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, VictoryActivity.class);
         intent.putExtra(EXTRA_VICTORY, extra);
         startActivity(intent);
+        finish();
     }
 
     /* if game over -> send victory name to Victory Activity and switch activity */
