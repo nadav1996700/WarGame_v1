@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:background="#A6DDE4"
+    android:background="#6AFDEF"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -15,20 +15,20 @@
         android:orientation="vertical"
         android:layout_margin="8dp">
 
-        <ImageView
-            android:id="@+id/main_IV_superman"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginTop="100dp"
-            android:src="@drawable/superman"/>
-
         <ProgressBar
             android:id="@+id/main_PB_supermanPB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
             android:padding="10dp"
             style="@android:style/Widget.ProgressBar.Horizontal"
-            android:indeterminate="false"/>
+            android:indeterminate="false"
+            android:progressDrawable="@drawable/green_progress_bar"/>
+
+        <ImageView
+            android:id="@+id/main_IV_superman"
+            android:layout_width="match_parent"
+            android:layout_height="100dp" />
 
 
     </LinearLayout>
@@ -111,21 +111,21 @@
         android:orientation="vertical"
         android:layout_margin="8dp">
 
-        <ImageView
-            android:id="@+id/main_IV_ironman"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginTop="100dp"
-            android:src="@drawable/iron"/>
-
         <ProgressBar
             android:id="@+id/main_PB_ironmanPB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
             android:padding="10dp"
             style="@android:style/Widget.ProgressBar.Horizontal"
             android:min="0"
-            android:indeterminate="false"/>
+            android:indeterminate="false"
+            android:progressDrawable="@drawable/green_progress_bar"/>
+
+        <ImageView
+            android:id="@+id/main_IV_ironman"
+            android:layout_width="match_parent"
+            android:layout_height="100dp" />
 
     </LinearLayout>
 
