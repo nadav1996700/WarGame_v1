@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -16,7 +16,7 @@
         android:layout_margin="8dp">
 
         <ProgressBar
-            android:id="@+id/main_PB_supermanPB"
+            android:id="@+id/main_PB_player1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
@@ -26,7 +26,7 @@
             android:progressDrawable="@drawable/green_progress_bar"/>
 
         <ImageView
-            android:id="@+id/main_IV_superman"
+            android:id="@+id/main_IV_player1"
             android:layout_width="match_parent"
             android:layout_height="100dp" />
 
@@ -42,29 +42,29 @@
         android:layout_marginRight="200dp">
 
         <Button
-            android:id="@+id/main_BTN_50pt_superman"
+            android:id="@+id/main_BTN_50pt_player1"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:text="50pt attack"
+            android:text= "@string/attack_50pt"
             android:background="#B1BAA6"/>
 
         <Button
-            android:id="@+id/main_BTN_30pt_superman"
+            android:id="@+id/main_BTN_30pt_player1"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:layout_marginTop="8dp"
-            android:text="30pt attack"
+            android:text="@string/attack_30pt"
             android:background="#B1BAA6"/>
 
         <Button
-            android:id="@+id/main_BTN_10pt_superman"
+            android:id="@+id/main_BTN_10pt_player1"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:layout_marginTop="8dp"
-            android:text="10pt attack"
+            android:text="@string/attack_10pt"
             android:background="#B1BAA6"/>
 
     </LinearLayout>
@@ -77,29 +77,29 @@
         android:padding="10dp">
 
         <Button
-            android:id="@+id/main_BTN_50pt_ironman"
+            android:id="@+id/main_BTN_50pt_player2"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:text="50pt attack"
+            android:text="@string/attack_50pt"
             android:background="#B1BAA6"/>
 
         <Button
-            android:id="@+id/main_BTN_30pt_ironman"
+            android:id="@+id/main_BTN_30pt_player2"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:layout_marginTop="8dp"
-            android:text="30pt attack"
+            android:text="@string/attack_30pt"
             android:background="#B1BAA6"/>
 
         <Button
-            android:id="@+id/main_BTN_10pt_ironman"
+            android:id="@+id/main_BTN_10pt_player2"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:layout_marginTop="8dp"
-            android:text="10pt attack"
+            android:text="@string/attack_10pt"
             android:background="#B1BAA6"/>
 
     </LinearLayout>
@@ -112,18 +112,17 @@
         android:layout_margin="8dp">
 
         <ProgressBar
-            android:id="@+id/main_PB_ironmanPB"
+            android:id="@+id/main_PB_player2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
             android:padding="10dp"
             style="@android:style/Widget.ProgressBar.Horizontal"
-            android:min="0"
             android:indeterminate="false"
             android:progressDrawable="@drawable/green_progress_bar"/>
 
         <ImageView
-            android:id="@+id/main_IV_ironman"
+            android:id="@+id/main_IV_player2"
             android:layout_width="match_parent"
             android:layout_height="100dp" />
 
